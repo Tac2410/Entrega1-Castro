@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from app_coder.views import inicio, crear_cuenta, administrador_iniciar_sesion, publicar, buscar_usuario
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', inicio, name='Inicio'),
+    path ('crear_cuenta/', crear_cuenta, name="insecion") 
 ]

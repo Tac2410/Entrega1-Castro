@@ -1,0 +1,29 @@
+{% extends 'app_coder/base.html'%}
+
+{% load static %}
+{% block main_content %}
+
+<!DOCTYPE html>
+<html lang=”en”>
+<head>
+</br>
+</br>
+</br>
+</br>
+</br>
+
+</head>
+<body>
+    <p>Iniciar sesion</p>
+    <form action="/crear_cuenta/" method="POST">
+        {% csrf_token %}
+        <p> Nombre de usuario: <input type='text' name='nombre'></p>
+        <p> Contraseña: <input type='text' name='password'></p>
+        <p> Correo electronico: <input type='email' name='email'></p>
+
+        <p><input type="submit" value="Subir">
+    </form>
+</body>
+</html>
+
+{% endblock main_content %}
