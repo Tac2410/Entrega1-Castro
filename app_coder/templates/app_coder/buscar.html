@@ -1,0 +1,40 @@
+{% extends 'app_coder/base.html'%}
+
+{% load static %}
+{% block main_content %}
+
+<!DOCTYPE html>
+<html lang=”en”>
+    <header class="bg-primary bg-gradient text-white">
+        <div class="container px-4 text-center">
+            <h1 class="fw-bolder">Administracion</h1>
+        </div>
+    </header>
+<body>
+    <p>Escriba el usuario que quiere buscar</p>
+    <form action="/busqueda/" method="POST">
+        
+        <p> Nombre de usuario: <input type='text' name='nombre'></p>
+        {% csrf_token %}
+        <p><input type="submit" value="Buscar">
+    </form>
+    {% if buscando == True %}
+        <ul>
+        {% for usuario in usuarios %}
+            <li>
+                <form action="#" method="GET">
+                    <p>
+                    {{usuario.nombre}} 
+                    <input type="submit" class='btn' value="Borrar usuario" name="{{usuario.nombre}}"
+                    </p>
+                    
+                </form>
+                
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
+
+{% endblock main_content %}

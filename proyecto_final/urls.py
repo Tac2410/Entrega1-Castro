@@ -20,5 +20,8 @@ from app_coder.views import inicio, crear_cuenta, administrador_iniciar_sesion, 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', inicio, name='Inicio'),
-    path ('crear_cuenta/', crear_cuenta, name="insecion") 
+    path ('crear_cuenta/', crear_cuenta, name="insecion"),
+    path('administrador_iniciar_sesion/', administrador_iniciar_sesion, name="adminsesion"),
+    path('busqueda/', buscar_usuario, name="bucarusuario"),
+    path('comentario/', publicar, name='publicar')
 ]
