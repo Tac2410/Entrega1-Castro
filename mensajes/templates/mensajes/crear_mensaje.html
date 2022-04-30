@@ -7,19 +7,20 @@
 <html lang=”en”>
     <header class="bg-primary bg-gradient text-white">
         <div class="container px-4 text-center">
-            <h1 class="fw-bolder">Crear cuenta</h1>
+            <h1 class="fw-bolder">Publicar</h1>
         </div>
     </header>
 <body>
-    <p>Crear cuenta</p>
-    <form action="/crear_cuenta/" method="POST">
+    <p>Escriba el comentario que quiere hacer</p>
+    <form action="/mensaje/crear/" method="POST">
         
-        <p> Nombre de usuario: <input type='text' name='nombre'></p>
-        <p> Contraseña: <input type='text' name='password'></p>
-        <p> Correo electronico: <input type='email' name='email'></p>
+        <table>
+            {{formulario.as_table}}
+        </table>
         {% csrf_token %}
         <p><input type="submit" value="Subir">
     </form>
+    <p>{{mensaje}}</p>
 </body>
 </html>
 

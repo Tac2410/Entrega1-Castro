@@ -1,0 +1,25 @@
+{% extends 'app_coder/base.html'%}
+
+{% load static %}
+{% block main_content %}
+        <!-- Header-->
+        <header class="bg-primary bg-gradient text-white">
+            <div class="container px-4 text-center">
+                <h1 class="fw-bolder">Inicio</h1>
+            </div>
+        </header>
+        <!-- About section-->
+        <section id="about">
+            <div class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2>Blogs de usuarios para usarios</h2>
+                        {% autoescape on %}
+                        <p> Esta pagina esta pensada para la interaccion entre usarios por medio de blogs, podiendo crear blogs sobre temas de interes y enviarse mensajes directemente entre ellos </p>
+                        {% endautoescape %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endblock main_content %}
+

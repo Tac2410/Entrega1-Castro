@@ -1,0 +1,35 @@
+{% extends 'app_coder/base.html'%}
+
+{% load static %}
+{% block main_content %}
+        <!-- Header-->
+        <header class="bg-primary bg-gradient text-white">
+            <div class="container px-4 text-center">
+                <h1 class="fw-bolder">Mensajes</h1>
+            </div>
+        </header>
+        <!-- About section-->
+        <body>
+            <ul>
+                <p><a href ="{% url 'enviar' %}">Envia un mensaje</a></p>
+                {% if not object_list %}
+                    <h1> No tienes mensajes </h1>
+                {% endif %}
+                    
+                {% for mensaje in object_list %}
+                    <li>
+                        
+                        <p> Enviado por: {{mensaje.creador}} </p>
+                        <p> {{mensaje.fecha_creacion}} </p>
+                        
+                        <p>
+                            <a href ="{% url 'detallemensajes' mensaje.ida %}">Ver</a>
+                            <a href ="{% url 'deletemensajes' mensaje.ida %}">Borrar</a>
+                        </p>
+
+                    </li>
+                {% endfor %}
+                
+            </ul>
+        </body>
+        {% endblock main_content %}

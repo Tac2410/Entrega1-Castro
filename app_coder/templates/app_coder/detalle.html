@@ -1,0 +1,26 @@
+{% extends 'app_coder/base.html'%}
+
+{% load static %}
+{% block main_content %}
+        <!-- Header-->
+        <header class="bg-primary bg-gradient text-white">
+            <div class="container px-4 text-center">
+                <h1 class="fw-bolder">Blogs</h1>
+            </div>
+        </header>
+        <!-- About section-->
+        <body>
+           <h1> {{comentario.titulo}} </h1>
+           <h2> {{comentario.subtitulo}} </h2>
+           {% autoescape on %}
+           <p style="font-size:135%;"> {{comentario.cuerpo}} </p>
+           {% endautoescape %}
+           {% if comentario.imagen != "" %}
+                <img src='/media/{{comentario.imagen}}' alt='Imagen' height="500"/>
+           {% endif %}
+           <p> {{comentario.fecha_creacion}}  Creador: {{comentario.creador}}</p>
+           <p>
+               <a href="{% url 'listablogs' %}">Regresar</a>
+           </p>
+        </body>
+        {% endblock main_content %}

@@ -5,25 +5,38 @@
         <!-- Header-->
         <header class="bg-primary bg-gradient text-white">
             <div class="container px-4 text-center">
-                <h1 class="fw-bolder">Inicio</h1>
+                <h1 class="fw-bolder">Blogs</h1>
             </div>
         </header>
         <!-- About section-->
-        <section id="about">
-            <div class="container px-4">
-                <div class="row gx-4 justify-content-center">
-                    <div class="col-lg-8">
-                        <h2>Comentarios subidos:</h2>
-                        <ul>
-                            {% for comentario in comentarios %}
-                                <p class="lead"> {{comentario.titulo}} </p>
-                                <p> {{comentario.mensaje}} </p>
-                                <p>Creado por: {{comentario.creador}};    fecha: {{comentario.fecha_creacion}}</p><br>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <body>
+            <ul>
+                {% if not object_list %}
+                    <h1> No hay blogs aun. Se el primero! </h1>
+                {% endif %}
+                <p><a href ="{% url 'publicar' %}">Crea un blog</a></p>
+                {% for blogs in object_list %}
+                    <li>
+                        <p>
+                            {{ blogs.titulo }} - Creado por: {{blogs.creador}} 
+                            {%for avata in avatar%}
+                                {% if avata.user.username == blogs.creador %}
+                                    <img src='/media/{{avata.imagen}}' alt='Imagen' width="30" height="30"/>
+                                {% endif %}
+                            {%endfor%}
+                        </p>
+                        
+                        <p>
+                            <a href ="{% url 'detalle' blogs.id %}">Ver</a>
+                            {% if request.user.username == blogs.creador %}
+                                <a href ="{% url 'actualizar' blogs.id %}">Editar</a>
+                                <a href ="{% url 'delete' blogs.id %}">Borrar</a>
+                            {%endif%}
+                        </p>
+                        
+                    </li>
+                {% endfor %}
+            </ul>
+        </body>
         {% endblock main_content %}
 

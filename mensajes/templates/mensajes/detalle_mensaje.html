@@ -1,0 +1,22 @@
+{% extends 'app_coder/base.html'%}
+
+{% load static %}
+{% block main_content %}
+        <!-- Header-->
+        <header class="bg-primary bg-gradient text-white">
+            <div class="container px-4 text-center">
+                <h1 class="fw-bolder">Mensajes</h1>
+            </div>
+        </header>
+        <!-- About section-->
+        <body>
+           <p style="font-size:115%;"> {{mensajes.creador}} </p>
+           {% autoescape on %}
+           <p> {{mensajes.mensaje}} </p>
+           {% endautoescape %}
+           <p> {{mensajes.fecha_creacion}}
+           <p>
+               <a href="{% url 'listamensajes' %}">Regresar</a>
+           </p>
+        </body>
+        {% endblock main_content %}

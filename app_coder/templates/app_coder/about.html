@@ -1,0 +1,20 @@
+{% extends 'app_coder/base.html'%}
+
+{% load static %}
+{% block main_content %}
+
+<!DOCTYPE html>
+<html lang=”en”>
+    <header class="bg-primary bg-gradient text-white">
+        <div class="container px-4 text-center">
+            <h1 class="fw-bolder">Acerca de mi</h1>
+        </div>
+    </header>
+<body>
+    {% autoescape on %}
+    <p>Mi nombre es Tomas, soy de La Rioja Argentina y yo soy el programador de este sitio web. Desde que soy chico me gusta las matematicas y resolver problemas asi que la programacion siempre fue algo que me encanto. Mi primer contacto con la programacion fue con scratch que me dio una base para pensar mas logicamente y me di cuenta que era lo que queria hacer. </p>
+    {% endautoescape %}
+</body>
+</html>
+
+{% endblock main_content %}

@@ -1,0 +1,22 @@
+{% extends 'app_coder/base.html'%}
+
+{% load static %}
+{% block main_content %}
+        <!-- Header-->
+        <header class="bg-primary bg-gradient text-white">
+            <div class="container px-4 text-center">
+                <h1 class="fw-bolder">Cuenta</h1>
+            </div>
+        </header>
+        <!-- About section-->
+        <body>
+            <h1> Editar perfil de {{usuario}} </h1>
+            <form action="" method='POST'>{% csrf_token %}
+                <table>
+                    {{ miformulario.as_table }}
+                </table>
+                <input type="submit", value='Enviar'>
+                <p><a class="navbar-brand" href="{%url 'avatar' %}">Haz clic aqui si quieres cambiar tu foto de perfil</a></p>
+            </form>
+        </body>
+        {% endblock main_content %}

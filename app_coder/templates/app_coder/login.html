@@ -1,0 +1,31 @@
+{% extends 'app_coder/base.html'%}
+
+{% load static %}
+{% block main_content %}
+
+<!DOCTYPE html>
+<html lang=”en”>
+    <header class="bg-primary bg-gradient text-white">
+        <div class="container px-4 text-center">
+            <h1 class="fw-bolder">Iniciar sesion</h1>
+        </div>
+    </header>
+<body>
+    <br>
+    <form action="/accounts/login/" method="POST">
+        
+        <!--<p> Nombre de usuario: <input type='text' name='nombre'></p>
+        <p> Contraseña: <input type='text' name='password'></p>
+        <p> Correo electronico: <input type='email' name='email'></p>-->
+        <table>
+            {{formulario.as_table}}
+        </table>
+        {% csrf_token %}
+        <br>
+        <button type="submit">Iniciar sesion</button><br>
+        <a class="navbar-brand" href="{%url 'register' %}">Si no tienes una cuenta haz clic aqui</a>
+    </form>
+</body>
+</html>
+
+{% endblock main_content %}

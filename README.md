@@ -1,13 +1,28 @@
 # Entrega1-Castro
 
-Trabajo de curso python de CODERHOUSE.
+Trabaje solo en este proyecto
 
-Al iniciar se puede hacer click en iniciar sesion o iniciar sesion administrador.
+Al iniciar hay una pagina de inicio, con la navbar se puede navegar al diferentes secciones, volver a la pagina de inicio, Blogs, Mensajes e Iniciar sesion.
 
-Si se elige iniciar secion solo hay que escribir un nombre, contraseña y correo electronico, esto va a hacer que se guarde en la base de datos.
+## Perfil
 
-Luego de iniciar secion se manda a la pagina de publicar comentarios en el que hay que llenar los campos y subir el comentario, para verlo se puede hacer click en el boton de inicio y alli se vera el comentario.
+Al hacer click en iniciar sesion, el usuario es redireccionado al login para iniciar sesion, en caso de no tener una cuenta, puede hacer una haciendo click en la opcion que dice que no tiene cuenta y hacer una en el signup. Los usuarios tienen un nombre de usuario, email y contraseña.
 
-Si se elige iniciar sesion administrador esto lo va a mandar a una pagina similar a la de iniciar sesion, pero para administradores (En el futuro pensaba cambiar esto para que solo se pueda subir en caso de ya ser un administracion).
+Al iniciar sesion se puede modificar el perfil, que da opciones de cambiar de contraseña y email, y ademas hay otra opcion que deja al usuario agregar o cambiar su foto de perfil 
 
-Al iniciar sesion como administrador se entra a una pagina que da la opcion de buscar usuarios en la base de datos por su nombre, y una vez encontrado se muestra en pantalla con un boton para eliminar a este del sistema.
+## Blogs
+
+La seccion de blogs dan la opcion de crear blogs que pueden ser vistos por todos los usuarios que entren en esa seccion. En la lista de blogs se muestran los titulos de los blogs creados, sus creadores y cuando los crearon, junto a la opcion de ver mas para ver el resto de informacion del blog.
+
+Al crear un blog se da la opcion de configurar su titulo, subtitulo, cuerpo y una imagen que esta adjuntada al blog, automaticamente el creador va a ser guardado y tambien se guardara la fecha y hora del momento de creacion del blog.
+
+En caso de tener creado un blog, este solo puede ser borrado o editado por su propio creador, la opcion de editar da la opcion de editar el titulo, subtitulo, cuerpo y la imagen del blog, dando tambien la opcion de dejar el blog sin imagen.
+
+## Mensajes
+
+Los usuarios que iniciaron sesion pueden mandar mensajes a otros usuarios en la parte de mensajes. Para mandar un mensaje solo hay que hacer clic en la opcion de crear un mensaje y escribir en el formulario que aparece el mensaje y el usuario al que quieres mandar el mensaje.
+
+La pagina de mensajes te muestra si alguien te mando un mensaje y desde alli puedes ver el mensaje o eliminarlo si eso deseas.
+
+
+

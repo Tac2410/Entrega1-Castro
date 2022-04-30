@@ -14,9 +14,9 @@
     <p>Iniciar sesion de administrador</p>
     <form action="/administrador_iniciar_sesion/" method="POST">
         
-        <p> Nombre de usuario: <input type='text' name='nombre'></p>
-        <p> Contraseña: <input type='text' name='password'></p>
-        <p> Correo electronico: <input type='email' name='email'></p>
+        <table>
+            {{formulario.as_table}}
+        </table>
         {% csrf_token %}
         <p><input type="submit" value="Subir">
     </form>

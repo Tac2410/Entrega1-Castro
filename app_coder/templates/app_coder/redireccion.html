@@ -1,4 +1,11 @@
 <ul class="navbar-nav ms-auto">
-    <li class="nav-item"><a class="navbar-brand" href="{%url 'insecion' %}">Iniciar sesion</a></li>
-    <li class="nav-item"><a class="navbar-brand" href="{%url 'adminsesion' %}">Iniciar sesion administracion</a></li>
+    <li class="nav-item"><a class="navbar-brand" href="{%url 'listablogs' %}">Blogs</a></li>
+    <li class="nav-item"><a class="navbar-brand" href="{%url 'listamensajes' %}">Mensajes</a></li>
+    {% if not request.user.is_authenticated %}
+        <li class="nav-item"><a class="navbar-brand" href="{%url 'login' %}">Iniciar sesion</a></li>
+    {% else %}
+        <li class="nav-item"><a class="navbar-brand" href="{%url 'logout' %}">Cerrar sesion</a></li>
+        <li class="nav-item"><a class="navbar-brand" href="{%url 'actualizarusu' %}">Modificar perfil</a></li>
+        <li class="nav-item"><p style="color:white">{{request.user.username}}</p></li>
+    {% endif %}
 </ul>
