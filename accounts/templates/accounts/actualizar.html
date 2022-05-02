@@ -11,12 +11,14 @@
         <!-- About section-->
         <body>
             <h1> Editar perfil de {{usuario}} </h1>
-            <form action="" method='POST'>{% csrf_token %}
+            <form action="" method='POST' enctype="multipart/form-data">{% csrf_token %}
                 <table>
                     {{ miformulario.as_table }}
                 </table>
                 <input type="submit", value='Enviar'>
+                {% if usuario.is_superuser %}
                 <p><a class="navbar-brand" href="{%url 'avatar' %}">Haz clic aqui si quieres cambiar tu foto de perfil</a></p>
+                {% endif %}
             </form>
         </body>
         {% endblock main_content %}

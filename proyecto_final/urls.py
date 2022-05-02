@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from django.contrib.auth.views import LogoutView
 from app_coder.views import * #inicio, crear_cuenta, administrador_iniciar_sesion, buscar_usuario, publicar, login_rec
 from mensajes.views import *
+from accounts.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),

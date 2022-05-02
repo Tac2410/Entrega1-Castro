@@ -1,11 +1,11 @@
-from asyncio.windows_events import NULL
 from distutils import errors
 import string
 from urllib import request
 from django.shortcuts import render
 from django.template import Template, Context, loader
-from app_coder.models import Comentario, Avatar
-from app_coder.forms import Comentarioform, UserEditForm, Avatarform, FormcrearUsu
+from app_coder.models import Comentario
+from app_coder.forms import Comentarioform
+from accounts.models import Avatar
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
@@ -16,43 +16,40 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView, DeleteView
 
 def inicio(request):
-    comentarios = Comentario.objects.values()
-    comentarios = {'comentarios':list(comentarios)}
-    return render(request, "app_coder/inicio.html", comentarios)
+    return render(request, "app_coder/inicio.html")
 
-def crear_cuenta(request):
-    if request.method == "POST":
-        usuario = FormcrearUsu(request.POST)
-        if usuario.is_valid():
-            data = usuario.cleaned_data['username']
-            usuario.save()
-            return render(request, "app_coder/mensajes.html", {"mensaje": "Usuario Creado"})
-        else:
-            return render(request, "app_coder/mensajes.html", {"mensaje": "No paso la validacion"})
-    else:
-        miFormulario = FormcrearUsu()
-        return render(request, "app_coder/crearcuenta.html", {'formulario': miFormulario})
+#def crear_cuenta(request):
+#    if request.method == "POST":
+#        usuario = FormcrearUsu(request.POST)
+#        if usuario.is_valid():
+#            data = usuario.cleaned_data['username']
+#            usuario.save()
+#            return render(request, "app_coder/mensajes.html", {"mensaje": "Usuario Creado"})
+#        else:
+#            return render(request, "app_coder/mensajes.html", {"mensaje": "No paso la validacion"})
+#    else:
+#        miFormulario = FormcrearUsu()
+#        return render(request, "app_coder/crearcuenta.html", {'formulario': miFormulario})
 
-def login_rec(request):
-    if request.method == "POST":
-        usuario = AuthenticationForm(request, data=request.POST)
-        if usuario.is_valid():
-            usu = usuario.cleaned_data.get('username')
-            con = usuario.cleaned_data.get('password')
+#def login_rec(request):
+#    if request.method == "POST":
+#        usuario = AuthenticationForm(request, data=request.POST)
+#        if usuario.is_valid():
+#            usu = usuario.cleaned_data.get('username')
+#            con = usuario.cleaned_data.get('password')
 
-            user = authenticate(username=usu, password=con)
-
-            if user is not None:
-                login(request, user)
-                return render (request, "app_coder/mensajes.html", {"mensaje":f"Bienvenido {usu}"})
-            else:
-                return render (request, "app_coder/mensajes.html", {"mensaje":"Error, datos incorrectos"})
-        else:
-            print(usuario.errors)
-            return render (request, "app_coder/mensajes.html", {"mensaje":"Error, formulario erroneo"})
-    else:
-        miFormulario = AuthenticationForm()
-        return render(request, "app_coder/login.html", {'formulario': miFormulario})
+#            user = authenticate(username=usu, password=con)
+#
+#            if user is not None:
+#                login(request, user)
+#                return render (request, "app_coder/mensajes.html", {"mensaje":f"Bienvenido {usu}"})
+#            else:
+#                return render (request, "app_coder/mensajes.html", {"mensaje":"Error, datos incorrectos"})
+#        else:
+#            return render (request, "app_coder/mensajes.html", {"mensaje":"Error, formulario erroneo"})
+#    else:
+#        miFormulario = AuthenticationForm()
+#        return render(request, "app_coder/login.html", {'formulario': miFormulario})
 
 #def administrador_iniciar_sesion(request):
 #    if request.method == "POST":
@@ -95,39 +92,39 @@ def publicar(request):
 #            borusu.delete()
 #        return render(request, "app_coder/buscar.html",{"buscando": False, "usuarios": ""})
 
-@login_required()
-def actualizar_usuario(request):
-    usuario = request.user
-    if request.method == 'POST':
-        miformulario = UserEditForm(request.POST)
-        if miformulario.is_valid():
-            data = miformulario.cleaned_data
-            usuario.email = data['email']
-            usuario.password1 = data['password1']
-            usuario.password2 = data['password2']
-            usuario.save()
+#@login_required()
+#def actualizar_usuario(request):
+#    usuario = request.user
+#    if request.method == 'POST':
+#        miformulario = UserEditForm(request.POST)
+#        if miformulario.is_valid():
+#            data = miformulario.cleaned_data
+#            usuario.email = data['email']
+#            usuario.password1 = data['password1']
+#            usuario.password2 = data['password2']
+#            usuario.save()
 
-            return render(request, 'app_coder/inicio.html',)
-    else:
-        miformulario = UserEditForm(initial={'email':usuario.email})
+#            return render(request, 'app_coder/inicio.html',)
+#    else:
+#        miformulario = UserEditForm(initial={'email':usuario.email})
     
-    return render(request, 'app_coder/actualizar.html', {'miformulario':miformulario, 'usuario':usuario})
+#    return render(request, 'app_coder/actualizar.html', {'miformulario':miformulario, 'usuario':usuario})
     
-def avatar(request):
-    if request.method == "POST":
-        comentario = Avatarform(request.POST, request.FILES)
-        if comentario.is_valid():
-            data = comentario.cleaned_data
-            avatares = Avatar.objects.filter(user=request.user)
-            if len(avatares) >=1:
-                avatares = Avatar.objects.get(user=request.user)
-                avatares.delete()
-            comentario_nuevo = Avatar(user=request.user, imagen=data['imagen'])
-            comentario_nuevo.save()
-        return render(request, "app_coder/inicio.html")
-    else:
-        miFormulario = Avatarform()
-        return render(request, "app_coder/avatar.html", {'formulario': miFormulario})   
+#def avatar(request):
+#    if request.method == "POST":
+#        comentario = Avatarform(request.POST, request.FILES)
+#        if comentario.is_valid():
+#            data = comentario.cleaned_data
+#            avatares = Avatar.objects.filter(user=request.user)
+#            if len(avatares) >=1:
+#                avatares = Avatar.objects.get(user=request.user)
+#                avatares.delete()
+#            comentario_nuevo = Avatar(user=request.user, imagen=data['imagen'])
+#            comentario_nuevo.save()
+#        return render(request, "app_coder/inicio.html")
+#    else:
+#        miFormulario = Avatarform()
+#        return render(request, "app_coder/avatar.html", {'formulario': miFormulario})   
 
 class BlogsLista(ListView):
     template_name = 'app_coder/index.html'
