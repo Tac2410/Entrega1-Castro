@@ -24,5 +24,8 @@ Los usuarios que iniciaron sesion pueden mandar mensajes a otros usuarios en la 
 
 La pagina de mensajes te muestra si alguien te mando un mensaje y desde alli puedes ver el mensaje o eliminarlo si eso deseas.
 
+## Video de la pagina funcionando:
+https://youtu.be/xNXyBEVuktE
+
 
 
